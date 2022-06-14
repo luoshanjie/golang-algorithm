@@ -2,46 +2,42 @@
 无论我们是面试还是提高自身水平，练习算法都是一项比较得力的方法，值得我们下功夫。当前练习的题目中大部分是单goroutine的，并发处理的很少。可在我们工作中，这有很常见，所以下面的练习中将会把并发的题目也贯穿其中
 
 ## 第一道开胃菜
-问题：让2个Goroutine依次打印，一个打印数字，一个打印字母，最后的结果是"1A2B3C4D5E6F7G8H9I10J11K12L13M14N15O16P17Q18R19S20T21U22V23W24X25Y26Z"
+问题：让2个Goroutine依次打印，一个打印数字，一个打印字母，最后结果"1A2B3C4D5E6F7G8H9I10J11K12L13M14N15O16P17Q18R19S20T21U22V23W24X25Y26Z"
 ```go
 package main
 
 import (
-	"fmt"
-	"sync"
+    "fmt"
+    "sync"
 )
 
 func number(wg *sync.WaitGroup, c1, c2 chan string) {
-	defer wg.Done()
-
-	for i := 0; i < 26; i++ {
-		<-c1
-		fmt.Printf("%d", i+1)
-		c2 <- "continue"
-	}
+    defer wg.Done()
+    for i := 0; i < 26; i++ {
+        <-c1
+        fmt.Printf("%d", i+1)
+        c2 <- "continue"
+    }
 }
 
 func letter(wg *sync.WaitGroup, c1, c2 chan string) {
-	defer wg.Done()
-
-	items := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	for i := 0; i < 26; i++ {
-		<-c1
-		fmt.Printf("%c", items[i])
-		c2 <- "continue"
-	}
+    defer wg.Done()
+    items := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for i := 0; i < 26; i++ {
+        <-c1
+        fmt.Printf("%c", items[i])
+        c2 <- "continue"
+    }
 }
 
 func main() {
-	chA, chB := make(chan string, 10), make(chan string, 10)
-
-	var wg sync.WaitGroup
-	wg.Add(2)
-
-	chA <- "start"
-	go number(&wg, chA, chB)
-	go letter(&wg, chB, chA)
-
-	wg.Wait()
+    chA, chB := make(chan string, 1), make(chan string, 1)
+    var wg sync.WaitGroup
+    wg.Add(2)
+    chA <- "start"
+    go number(&wg, chA, chB)
+    go letter(&wg, chB, chA)
+    wg.Wait()
 }
 ```
+## 第二道开胃菜
