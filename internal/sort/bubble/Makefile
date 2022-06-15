@@ -2,5 +2,5 @@
 PROJECT=bubble
 
 test:
-	@echo '[${PROJECT}] Testing'
-	@go test -v ./...
+    @echo '[${PROJECT}] Testing'
+    @go test -v ./...
