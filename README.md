@@ -166,6 +166,7 @@ func main() {
     wg.Wait()
 }
 ```
+这背后的理论依据是：**CSP(Communicating Sequential Process)**，又名通信顺序进程。这种并发编程模型用于描述两个独立的并发实体，通过共享的通讯channel(管道)进行通信。
 
 ## 正菜开始
 ### 排序
