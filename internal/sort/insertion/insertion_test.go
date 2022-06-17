@@ -9,7 +9,7 @@ func TestSort(t *testing.T) {
         get := items[i]
         want := i + 1
         if get != want {
-            t.Errorf("get %d but want %d", get, want)
+            t.Errorf("get %d but want %d\n", get, want)
         }
     }
 }

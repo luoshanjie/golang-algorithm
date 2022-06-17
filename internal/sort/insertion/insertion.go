@@ -7,7 +7,7 @@ func sort(arr []int) {
             if arr[j-1] > arr[j] {
                 arr[j-1], arr[j] = arr[j], arr[j-1]
             }
-            j = j - 1
+            j--
         }
     }
 }
