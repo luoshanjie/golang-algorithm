@@ -1,11 +1,13 @@
 package insertion
 
 func sort(arr []int) {
-	size := len(arr)
-	cache := make([]int, size)
-	for i := 0; i < size; i++ {
-		value := arr[i]
-
-	}
-
+    for i := 0; i < len(arr); i++ {
+        j := i
+        for j > 0 {
+            if arr[j-1] > arr[j] {
+                arr[j-1], arr[j] = arr[j], arr[j-1]
+            }
+            j = j - 1
+        }
+    }
 }
