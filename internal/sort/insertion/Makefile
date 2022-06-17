@@ -1,5 +1,5 @@
 .DEFAULT_GOAL=test
-PROJECT=insert
+PROJECT=insertion
 
 test:
 	@echo '[${PROJECT}] Testing'

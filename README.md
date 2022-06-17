@@ -171,4 +171,4 @@ func main() {
 ## 正菜开始
 ### 排序
 - [冒泡](internal/sort/bubble)
-- [插入](internal/sort/insert)
+- [插入](internal/sort/insertion)
