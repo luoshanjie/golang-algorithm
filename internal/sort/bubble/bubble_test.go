@@ -15,3 +15,11 @@ func TestSort(t *testing.T) {
         }
     }
 }
+
+func BenchmarkSort(b *testing.B) {
+    b.ResetTimer()
+    for i := 0; i < 3000; i++ {
+        sort([]int{4, 5, 7, 8, 9, 10, 1, 3, 2, 6})
+    }
+    b.StopTimer()
+}
