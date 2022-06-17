@@ -1,6 +1,5 @@
-
 .DEFAULT_GOAL=test
-PROJECT=bubble
+PROJECT=insert
 
 test:
 	@echo '[${PROJECT}] Testing'
